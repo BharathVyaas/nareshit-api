@@ -20,7 +20,7 @@ async function cCompiler(input) {
 
     // Execute the compiled program
     const { stdout: executionOutput, stderr: executionError } = await exec(
-      `${tmpFile.replace(".c", "")}`
+      `./${tmpFile.replace(".c", "")}`
     );
     if (executionError) {
       console.error(`Execution error: ${executionError}`);
