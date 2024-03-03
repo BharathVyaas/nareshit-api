@@ -25,6 +25,11 @@ class ProgramClass {
 
           return output;
         }
+        case "java": {
+          const output = await Compiler.java(input);
+
+          return output;
+        }
         default:
           return { code: 402, meaasge: "unexpected language" };
       }

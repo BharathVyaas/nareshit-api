@@ -1,5 +1,20 @@
 const javaScriptCompiler = require("../util/compilers/javascript");
 const cCompiler = require("../util/compilers/c");
+const javaCompiler = require("../util/compilers/java");
+
+function getOutput(rawOutput) {
+  let output = rawOutput;
+
+  if (typeof rawOutput === "number") {
+    // ...
+  }
+
+  if (typeof rawOutput === "object") {
+    output = JSON.stringify(rawOutput);
+  }
+
+  return output;
+}
 
 class CompilerClass {
   static instance;
@@ -12,15 +27,27 @@ class CompilerClass {
   }
 
   async c(input) {
-    const output = await cCompiler(input);
+    const rawOutput = await cCompiler(input);
+
+    let output = getOutput(rawOutput);
 
     return output;
   }
 
   async javaScript(input) {
-    const output = await javaScriptCompiler(input);
+    const rawOutput = await javaScriptCompiler(input);
 
-    return String(output);
+    let output = getOutput(rawOutput);
+
+    return output;
+  }
+
+  async java(input) {
+    const rawOutput = await javaCompiler(input);
+
+    let output = getOutput(rawOutput);
+
+    return output;
   }
 }
 
