@@ -1,5 +1,10 @@
-//  This is C code.
-#include<stdio.h>
-int main(){
-    int a = 2
+#include <stdio.h>
+  
+int sum(int x, int y) {
+  return x + y;
+}    
+      
+  
+
+int main() {printf("%d",sum(1,2));return 0;
 }
