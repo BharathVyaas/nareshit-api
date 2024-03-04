@@ -22,7 +22,7 @@ function javaScriptCompiler(input) {
   vm.run(input);
 
   let returnValue = output.trim();
-console.log('sdf',returnValue)
+  console.log('sdf',returnValue)
   returnValue = JSON.stringify(returnValue);
 
   return returnValue;
