@@ -2,11 +2,17 @@ const fs = require("fs");
 const { spawnSync } = require("child_process");
 
 function javaCompiler(input) {
-  // Write the input Java code to Main.java file
-  fs.writeFileSync("Main.java", input);
+  // Check if Main.java already exists
+  const javaFilePath = "Main.java";
+  const fileExists = fs.existsSync(javaFilePath);
+
+  // Write the input Java code to Main.java file if it doesn't exist
+  if (!fileExists) {
+    fs.writeFileSync(javaFilePath, input);
+  }
 
   // Compile the Java code
-  const compileResult = spawnSync("javac", ["Main.java"], {
+  const compileResult = spawnSync("javac", [javaFilePath], {
     encoding: "utf-8",
   });
 
